@@ -1,0 +1,13 @@
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.sramar.permission" >
+
+    <application>
+        <activity
+            android:name="com.sramar.permission.PermissionActivity"
+            android:theme="@style/Translucent" />
+
+    </application>
+
+
+</manifest>
+
