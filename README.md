@@ -2,7 +2,20 @@
 
 //1.全局
 dependencies {
-    classpath 'com.hujiang.aspectjx:gradle-android-plugin-aspectjx:2.0.0'
+  ...
+  classpath 'com.hujiang.aspectjx:gradle-android-plugin-aspectjx:2.0.0'
+}
+
+repositories {
+  ...
+  maven { url 'https://jitpack.io' }
+}
+
+
+//2.模块中
+dependencies{
+  ...
+  implementation '本项目'
 }
 //2.模块中
 dependencies{
@@ -11,12 +24,12 @@ dependencies{
 
 
 #使用时
-
 //初始化
 @Override
 protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
     setContentView(R.layout.activity_main);
+
     GPermisson.init(new PermissionGlobalConfigCallback() {
         @Override
         public void shouldShowRational(String permission, int ration) {
@@ -29,6 +42,7 @@ protected void onCreate(Bundle savedInstanceState) {
             Log.e("momo","onPermissonReject"+permission+": "+reject);
         }
     });
+
     testPermission();
 }
 
