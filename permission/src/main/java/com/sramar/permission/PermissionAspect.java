@@ -27,6 +27,8 @@ public class PermissionAspect {
             final String[] permissions = annotation.permissions();
             final int[] rationales = annotation.rationales();
             final int[] rejects = annotation.rejects();
+            final String[] srationales = annotation.srationales();
+            final String[] srejects = annotation.srejects();
 
             final List<String> permissionList = Arrays.asList(permissions);
             Object object = joinPoint.getThis();
@@ -55,22 +57,30 @@ public class PermissionAspect {
                         public void shouldShowRational(String permisson) {
                             int index = permissionList.indexOf(permisson);
                             int rationale = -1;
+                            String srationale = "";
                             if (rationales.length > index) {
                                 rationale = rationales[index];
                             }
+                            if (srationales.length > index) {
+                                srationale = srationales[index];
+                            }
                             if(GPermisson.getGlobalConfigCallback() != null)
-                                GPermisson.getGlobalConfigCallback().shouldShowRational(permisson, rationale);
+                                GPermisson.getGlobalConfigCallback().shouldShowRational(permisson, srationale);
                         }
 
                         @Override
                         public void onPermissonReject(String permisson) {
                             int index = permissionList.indexOf(permisson);
                             int reject = -1;
+                            String sreject = "";
                             if (rejects.length > index) {
                                 reject = rejects[index];
                             }
+                            if (srejects.length > index) {
+                                sreject = srejects[index];
+                            }
                             if(GPermisson.getGlobalConfigCallback() != null)
-                                GPermisson.getGlobalConfigCallback().onPermissonReject(permisson, reject);
+                                GPermisson.getGlobalConfigCallback().onPermissonReject(permisson, sreject);
                         }
                     }).request();
         } catch (Exception e) {

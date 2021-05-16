@@ -14,4 +14,9 @@ public @interface Permission {
     int[] rationales() default {};
     /* Rejects */
     int[] rejects() default {};
+
+    /* Rationales */
+    String[] srationales() default {};
+    /* Rejects */
+    String[] srejects() default {};
 }
