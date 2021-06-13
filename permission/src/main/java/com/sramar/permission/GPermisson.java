@@ -9,14 +9,13 @@ public class GPermisson {
     private static PermissionGlobalConfigCallback globalConfigCallback;
     private PermissionCallback callback;
     private String[] permissions;
-    private Context context;
+    private static Context context;
 
-    public GPermisson(Context context) {
-        this.context = context;
-
+    public GPermisson() {
     }
 
-    public static void init(PermissionGlobalConfigCallback callback) {
+    public static void init(Context c,PermissionGlobalConfigCallback callback) {
+        context = c;
         globalConfigCallback = callback;
     }
 
@@ -24,8 +23,8 @@ public class GPermisson {
         return globalConfigCallback;
     }
 
-    public static GPermisson with(Context context) {
-        return new GPermisson(context);
+    public static GPermisson with() {
+        return new GPermisson();
     }
 
     public GPermisson permisson(String[] permissons) {
